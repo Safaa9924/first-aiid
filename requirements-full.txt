@@ -1,0 +1,10 @@
+docling
+pandas
+numpy
+scikit-learn
+sentence-transformers
+chromadb
+langdetect
+deep-translator
+requests
+streamlit

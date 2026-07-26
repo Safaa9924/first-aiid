@@ -1,0 +1,25 @@
+# Chroma vector store (not needed by streamlit_app.py, rebuild locally if needed)
+chroma_db/
+
+# Raw extracted PDF images (Docling/PyMuPDF scratch output, not part of the app)
+pdf_images/
+
+# Source PDF (large binary, keep out of git — the app doesn't need it,
+# only 01_documents.py does when rebuilding the index)
+*.pdf
+
+# NOTE: data/chunks.csv, data/tfidf_index.pkl, data/bm25_index.pkl and
+# data/embedding_matrix.npy ARE required by streamlit_app.py at runtime
+# and must be committed to the repo (Streamlit Cloud only has what's in
+# git — it can't see files generated locally). Do NOT ignore data/.
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
