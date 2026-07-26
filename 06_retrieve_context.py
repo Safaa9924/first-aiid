@@ -18,6 +18,8 @@ from langdetect import detect
 from deep_translator import GoogleTranslator
 from sentence_transformers import CrossEncoder
 
+from bm25_utils import simple_tokenize, min_max_normalize
+
 # ==================================================
 # Retrieval / Context Configuration
 # ==================================================
@@ -41,26 +43,6 @@ QUERY_EXPANSION = {
     "stroke": ["FAST", "facial drooping", "speech difficulty"],
     "choking": ["back blows", "abdominal thrusts", "airway obstruction"],
 }
-
-
-def simple_tokenize(text):
-    return re.findall(r"\b[a-z0-9]+\b", text.lower())
-
-
-def min_max_normalize(scores):
-
-    scores = np.asarray(scores, dtype=np.float32)
-
-    if scores.size == 0:
-        return scores
-
-    lo = scores.min()
-    hi = scores.max()
-
-    if hi == lo:
-        return np.zeros_like(scores)
-
-    return (scores - lo) / (hi - lo)
 
 
 # ==================================================
